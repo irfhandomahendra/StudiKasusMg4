@@ -68,6 +68,8 @@ namespace AuthServer
                 };
             });
 
+            services.AddScoped<IUser, UserDAL>();
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -89,6 +91,7 @@ namespace AuthServer
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
