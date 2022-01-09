@@ -198,11 +198,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\RestAPI Sync\\EnrollmentService\\EnrollmentService.csproj",
+      "projectUniqueName": "d:\\AGIT BOOTCAMP\\StudiKasusMg4\\RestAPISync\\EnrollmentService\\EnrollmentService.csproj",
       "projectName": "EnrollmentService",
-      "projectPath": "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\RestAPI Sync\\EnrollmentService\\EnrollmentService.csproj",
+      "projectPath": "d:\\AGIT BOOTCAMP\\StudiKasusMg4\\RestAPISync\\EnrollmentService\\EnrollmentService.csproj",
       "packagesPath": "C:\\Users\\Irfhando Mahendra\\.nuget\\packages\\",
-      "outputPath": "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\RestAPI Sync\\EnrollmentService\\obj\\",
+      "outputPath": "d:\\AGIT BOOTCAMP\\StudiKasusMg4\\RestAPISync\\EnrollmentService\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Irfhando Mahendra\\AppData\\Roaming\\NuGet\\NuGet.Config",

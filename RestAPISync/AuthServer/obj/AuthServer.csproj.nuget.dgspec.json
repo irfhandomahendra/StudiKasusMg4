@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\RestAPI Sync\\AuthServer\\AuthServer.csproj": {}
+    "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\RestAPISync\\AuthServer\\AuthServer.csproj": {}
   },
   "projects": {
-    "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\RestAPI Sync\\AuthServer\\AuthServer.csproj": {
+    "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\RestAPISync\\AuthServer\\AuthServer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\RestAPI Sync\\AuthServer\\AuthServer.csproj",
+        "projectUniqueName": "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\RestAPISync\\AuthServer\\AuthServer.csproj",
         "projectName": "AuthServer",
-        "projectPath": "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\RestAPI Sync\\AuthServer\\AuthServer.csproj",
+        "projectPath": "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\RestAPISync\\AuthServer\\AuthServer.csproj",
         "packagesPath": "C:\\Users\\Irfhando Mahendra\\.nuget\\packages\\",
-        "outputPath": "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\RestAPI Sync\\AuthServer\\obj\\",
+        "outputPath": "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\RestAPISync\\AuthServer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Irfhando Mahendra\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,9 +40,35 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[5.0.13, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.13, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.13, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.13, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.13, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[5.6.3, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.15.0, )"
             }
           },
           "imports": [
