@@ -31,6 +31,10 @@ namespace EnrollmentService
             services.AddDbContext<AppDbContext>(options => 
             options.UseSqlServer(Configuration.GetConnectionString("LocalConnection")));
 
+            services.AddScoped<IStudent, StudentDAL>();
+            services.AddScoped<ICourse, CourseDAL>();
+            services.AddScoped<IEnrollment, EnrollmentDAL>();
+
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddControllers();

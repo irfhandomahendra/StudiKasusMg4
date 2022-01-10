@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\RestAPISync\\EnrollmentService\\EnrollmentService.csproj": {}
+    "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\RestAPISync\\enrollmentservice\\EnrollmentService.csproj": {}
   },
   "projects": {
-    "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\RestAPISync\\EnrollmentService\\EnrollmentService.csproj": {
+    "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\RestAPISync\\enrollmentservice\\EnrollmentService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\RestAPISync\\EnrollmentService\\EnrollmentService.csproj",
+        "projectUniqueName": "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\RestAPISync\\enrollmentservice\\EnrollmentService.csproj",
         "projectName": "EnrollmentService",
-        "projectPath": "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\RestAPISync\\EnrollmentService\\EnrollmentService.csproj",
+        "projectPath": "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\RestAPISync\\enrollmentservice\\EnrollmentService.csproj",
         "packagesPath": "C:\\Users\\Irfhando Mahendra\\.nuget\\packages\\",
-        "outputPath": "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\RestAPISync\\EnrollmentService\\obj\\",
+        "outputPath": "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\RestAPISync\\enrollmentservice\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Irfhando Mahendra\\AppData\\Roaming\\NuGet\\NuGet.Config",

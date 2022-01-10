@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "yfYKtI5BhV9Rzkr2uGeoASxSahNMAJT1iQ+1xuaRf0PDq/1q8G7qQPtweTcEZWMroWDJlhVA4L8g3ZmWc48T8A==",
+  "dgSpecHash": "lBJRslJ9kpCCAQSN8JXO6+0bp03FF3E3JHpXsQyVWIYtjLwh4c1cPQ6LMyKegLP7IgXXO1nHadHXh1kdlGX6aA==",
   "success": true,
-  "projectFilePath": "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\RestAPISync\\EnrollmentService\\EnrollmentService.csproj",
+  "projectFilePath": "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\RestAPISync\\enrollmentservice\\EnrollmentService.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Irfhando Mahendra\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\Irfhando Mahendra\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",

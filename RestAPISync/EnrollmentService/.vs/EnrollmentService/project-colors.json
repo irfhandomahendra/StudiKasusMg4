@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "a9dcb74a-47bc-4861-a96b-1b0e9b54ac6e": {
+      "ProjectGuid": "a9dcb74a-47bc-4861-a96b-1b0e9b54ac6e",
+      "DisplayName": "EnrollmentService",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}

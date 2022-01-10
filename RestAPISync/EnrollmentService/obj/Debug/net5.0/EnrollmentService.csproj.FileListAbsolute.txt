@@ -58,3 +58,5 @@ D:\AGIT BOOTCAMP\StudiKasusMg4\RestAPISync\EnrollmentService\obj\Debug\net5.0\En
 D:\AGIT BOOTCAMP\StudiKasusMg4\RestAPISync\EnrollmentService\obj\Debug\net5.0\ref\EnrollmentService.dll
 D:\AGIT BOOTCAMP\StudiKasusMg4\RestAPISync\EnrollmentService\obj\Debug\net5.0\EnrollmentService.pdb
 D:\AGIT BOOTCAMP\StudiKasusMg4\RestAPISync\EnrollmentService\obj\Debug\net5.0\EnrollmentService.genruntimeconfig.cache
+D:\AGIT BOOTCAMP\StudiKasusMg4\RestAPISync\EnrollmentService\bin\Debug\net5.0\AutoMapper.dll
+D:\AGIT BOOTCAMP\StudiKasusMg4\RestAPISync\EnrollmentService\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
