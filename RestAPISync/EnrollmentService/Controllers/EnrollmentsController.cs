@@ -6,6 +6,7 @@ using AutoMapper;
 using EnrollmentService.Data;
 using EnrollmentService.Dtos;
 using EnrollmentService.Models;
+using EnrollmentService.SyncDataServices.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EnrollmentService.Controllers
@@ -16,11 +17,14 @@ namespace EnrollmentService.Controllers
     {
         private IEnrollment _enrollment;
         private IMapper _mapper;
+        private readonly IPaymentDataClient _paymentDataClient;
 
-        public EnrollmentsController(IEnrollment enrollment,IMapper mapper)
+        public EnrollmentsController(IEnrollment enrollment, IMapper mapper,
+        IPaymentDataClient paymentDataClient)
         {
             _enrollment = enrollment;
             _mapper = mapper;
+            _paymentDataClient = paymentDataClient;
         }
 
         // GET: api/<EnrollmentsController>
@@ -34,7 +38,7 @@ namespace EnrollmentService.Controllers
 
         // GET api/<EnrollmentsController>/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<EnrollmentDto>> Get(int id)
+        public async Task<ActionResult<EnrollmentDto>> GetEnrollmentById(int id)
         {
             var result = await _enrollment.GetById(id.ToString());
             if (result == null)
@@ -46,19 +50,22 @@ namespace EnrollmentService.Controllers
 
         // POST api/<EnrollmentsController>
         [HttpPost]
-        public async Task<ActionResult<EnrollmentDto>> Post([FromBody] EnrollmentCreateDto enrollmentCreateDto)
+        public async Task<ActionResult<EnrollmentDto>> Post(EnrollmentCreateDto enrollmentCreateDto)
         {
+            var enrollment = _mapper.Map<Enrollment>(enrollmentCreateDto);
+            var result = await _enrollment.Insert(enrollment);
+            var dtos = _mapper.Map<EnrollmentDto>(result);
+
             try
             {
-                var enrollment = _mapper.Map<Models.Enrollment>(enrollmentCreateDto);
-                var result = await _enrollment.Insert(enrollment);
-                var dtos = _mapper.Map<Dtos.EnrollmentDto>(result);
-                return Ok(dtos);
+                await _paymentDataClient.SendEnrollmentToPayment(enrollment);
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                Console.WriteLine($"--> Could not send synchronously: {ex.Message}");
             }
+
+            return CreatedAtRoute(nameof(GetEnrollmentById),dtos);
         }
 
         // PUT api/<EnrollmentsController>/5
@@ -70,7 +77,7 @@ namespace EnrollmentService.Controllers
                 var enrollment = _mapper.Map<Models.Enrollment>(enrollmentCreateDto);
                 var result = await _enrollment.Update(id.ToString(), enrollment);
                 var dtos = _mapper.Map<Dtos.EnrollmentDto>(result);
-                return Ok(dtos);  
+                return Ok(dtos);
             }
             catch (System.Exception ex)
             {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EnrollmentService.Data;
+using EnrollmentService.SyncDataServices.Http;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -34,7 +35,8 @@ namespace EnrollmentService
             services.AddScoped<IStudent, StudentDAL>();
             services.AddScoped<ICourse, CourseDAL>();
             services.AddScoped<IEnrollment, EnrollmentDAL>();
-
+            services.AddHttpClient<IPaymentDataClient,HttpPaymentDataClient>();
+            
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddControllers();
