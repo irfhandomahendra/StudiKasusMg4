@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AuthServer.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220109061049_InitialCreate")]
+    [Migration("20220110014000_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
