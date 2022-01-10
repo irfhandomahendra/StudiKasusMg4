@@ -31,6 +31,8 @@ namespace EnrollmentService
             services.AddDbContext<AppDbContext>(options => 
             options.UseSqlServer(Configuration.GetConnectionString("LocalConnection")));
 
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
