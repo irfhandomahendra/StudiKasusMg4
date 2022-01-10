@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\AGIT BOOTCAMP\\StudiKasusMg4\\RestAPISync\\EnrollmentService\\EnrollmentService.csproj": {}
+    "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\RestAPISync\\EnrollmentService\\EnrollmentService.csproj": {}
   },
   "projects": {
-    "d:\\AGIT BOOTCAMP\\StudiKasusMg4\\RestAPISync\\EnrollmentService\\EnrollmentService.csproj": {
+    "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\RestAPISync\\EnrollmentService\\EnrollmentService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\AGIT BOOTCAMP\\StudiKasusMg4\\RestAPISync\\EnrollmentService\\EnrollmentService.csproj",
+        "projectUniqueName": "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\RestAPISync\\EnrollmentService\\EnrollmentService.csproj",
         "projectName": "EnrollmentService",
-        "projectPath": "d:\\AGIT BOOTCAMP\\StudiKasusMg4\\RestAPISync\\EnrollmentService\\EnrollmentService.csproj",
+        "projectPath": "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\RestAPISync\\EnrollmentService\\EnrollmentService.csproj",
         "packagesPath": "C:\\Users\\Irfhando Mahendra\\.nuget\\packages\\",
-        "outputPath": "d:\\AGIT BOOTCAMP\\StudiKasusMg4\\RestAPISync\\EnrollmentService\\obj\\",
+        "outputPath": "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\RestAPISync\\EnrollmentService\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Irfhando Mahendra\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,6 +40,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[8.1.1, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[5.0.13, )"
