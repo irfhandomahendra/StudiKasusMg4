@@ -6,7 +6,6 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using EnrollmentService.Dtos;
-using EnrollmentService.Models;
 using Microsoft.Extensions.Configuration;
 
 namespace EnrollmentService.SyncDataServices.Http
@@ -21,7 +20,7 @@ namespace EnrollmentService.SyncDataServices.Http
             _httpClient = httpClient;
             _configuration = configuration;
         }
-        public async Task SendEnrollmentToPayment(Enrollment enroll)
+        public async Task SendEnrollmentToPayment(EnrollmentDto enroll)
         {
             var httpContent = new StringContent(
                 JsonSerializer.Serialize(enroll),

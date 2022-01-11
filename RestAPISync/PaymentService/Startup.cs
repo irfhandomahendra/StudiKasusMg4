@@ -31,6 +31,7 @@ namespace PaymentService
             services.AddDbContext<AppDbContext>(options => 
             options.UseSqlServer(Configuration.GetConnectionString("LocalConnection")));
 
+            services.AddScoped<IPaymentRepo,PaymentRepo>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddControllers();

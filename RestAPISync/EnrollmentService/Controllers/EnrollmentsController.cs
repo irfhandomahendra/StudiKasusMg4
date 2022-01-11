@@ -50,15 +50,15 @@ namespace EnrollmentService.Controllers
 
         // POST api/<EnrollmentsController>
         [HttpPost]
-        public async Task<ActionResult<EnrollmentDto>> Post(EnrollmentCreateDto enrollmentCreateDto)
+        public async Task<ActionResult<EnrollmentDto>> Post([FromBody] EnrollmentCreateDto enrollmentCreateDto)
         {
             var enrollment = _mapper.Map<Enrollment>(enrollmentCreateDto);
-            var result = await _enrollment.Insert(enrollment);
-            var dtos = _mapper.Map<EnrollmentDto>(result);
+            //var result = await _enrollment.Insert(enrollment);
+            var dtos = _mapper.Map<EnrollmentDto>(enrollment);
 
             try
             {
-                await _paymentDataClient.SendEnrollmentToPayment(enrollment);
+                await _paymentDataClient.SendEnrollmentToPayment(dtos);
             }
             catch (Exception ex)
             {
