@@ -13,6 +13,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using PaymentService.Data;
+using PaymentService.SyncDataServices.Http;
 
 namespace PaymentService
 {
@@ -32,6 +33,7 @@ namespace PaymentService
             options.UseSqlServer(Configuration.GetConnectionString("LocalConnection")));
 
             services.AddScoped<IPaymentRepo,PaymentRepo>();
+            services.AddHttpClient<IPaymentDataClient,HttpPaymentDataClient>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddControllers();

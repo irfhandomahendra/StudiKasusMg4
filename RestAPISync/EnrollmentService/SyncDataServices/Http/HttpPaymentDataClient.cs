@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Json;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -33,6 +34,8 @@ namespace EnrollmentService.SyncDataServices.Http
             else{
                 Console.WriteLine("--> Sync POST to PaymentService failed");
             }
+            // using var response = await _httpClient.PostAsJsonAsync(_configuration["PaymentService"], enroll);
+            // response.EnsureSuccessStatusCode();
         }
     }
 }

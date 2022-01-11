@@ -50,22 +50,23 @@ namespace EnrollmentService.Controllers
 
         // POST api/<EnrollmentsController>
         [HttpPost]
-        public async Task<ActionResult<EnrollmentDto>> Post([FromBody] EnrollmentCreateDto enrollmentCreateDto)
+        public async Task<ActionResult<EnrollmentDto>> Post(EnrollmentCreateDto enrollmentCreateDto)
         {
             var enrollment = _mapper.Map<Enrollment>(enrollmentCreateDto);
-            //var result = await _enrollment.Insert(enrollment);
+            //await _enrollment.Insert(enrollment);
             var dtos = _mapper.Map<EnrollmentDto>(enrollment);
 
             try
             {
                 await _paymentDataClient.SendEnrollmentToPayment(dtos);
+                Console.WriteLine("----> Data sent");
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"--> Could not send synchronously: {ex.Message}");
             }
 
-            return CreatedAtRoute(nameof(GetEnrollmentById),dtos);
+            return Ok(dtos);
         }
 
         // PUT api/<EnrollmentsController>/5

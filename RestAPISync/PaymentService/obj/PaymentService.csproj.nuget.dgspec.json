@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\AGIT BOOTCAMP\\StudiKasusMg4\\RestAPISync\\PaymentService\\PaymentService.csproj": {}
+    "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\RestAPISync\\paymentservice\\PaymentService.csproj": {}
   },
   "projects": {
-    "d:\\AGIT BOOTCAMP\\StudiKasusMg4\\RestAPISync\\PaymentService\\PaymentService.csproj": {
+    "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\RestAPISync\\paymentservice\\PaymentService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\AGIT BOOTCAMP\\StudiKasusMg4\\RestAPISync\\PaymentService\\PaymentService.csproj",
+        "projectUniqueName": "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\RestAPISync\\paymentservice\\PaymentService.csproj",
         "projectName": "PaymentService",
-        "projectPath": "d:\\AGIT BOOTCAMP\\StudiKasusMg4\\RestAPISync\\PaymentService\\PaymentService.csproj",
+        "projectPath": "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\RestAPISync\\paymentservice\\PaymentService.csproj",
         "packagesPath": "C:\\Users\\Irfhando Mahendra\\.nuget\\packages\\",
-        "outputPath": "d:\\AGIT BOOTCAMP\\StudiKasusMg4\\RestAPISync\\PaymentService\\obj\\",
+        "outputPath": "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\RestAPISync\\paymentservice\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Irfhando Mahendra\\AppData\\Roaming\\NuGet\\NuGet.Config",

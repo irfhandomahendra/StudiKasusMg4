@@ -29,14 +29,19 @@ namespace EnrollmentService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<AppDbContext>(options => 
+            services.AddDbContext<AppDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("LocalConnection")));
 
             services.AddScoped<IStudent, StudentDAL>();
             services.AddScoped<ICourse, CourseDAL>();
             services.AddScoped<IEnrollment, EnrollmentDAL>();
-            services.AddHttpClient<IPaymentDataClient,HttpPaymentDataClient>();
-            
+            services.AddHttpClient<IPaymentDataClient, HttpPaymentDataClient>();
+
+            // services.AddMvc(options =>
+            // {
+            //     options.SuppressAsyncSuffixInActionNames = false;
+            // });
+
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddControllers();

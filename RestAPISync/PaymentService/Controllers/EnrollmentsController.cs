@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -11,6 +12,7 @@ using Newtonsoft.Json;
 using PaymentService.Data;
 using PaymentService.Dtos;
 using PaymentService.Models;
+using PaymentService.SyncDataServices.Http;
 
 namespace PaymentService.Controllers
 {
@@ -20,42 +22,49 @@ namespace PaymentService.Controllers
     {
         private IPaymentRepo _repo;
         private readonly IMapper _mapper;
+        private readonly IPaymentDataClient _paymentDataClient;
         private readonly HttpClient _httpClient;
         private readonly IConfiguration _configuration;
 
         public EnrollmentsController(IPaymentRepo repo,
-        IMapper mapper, HttpClient httpClient, IConfiguration configuration)
+        IMapper mapper, IPaymentDataClient paymentDataClient,
+        HttpClient httpClient, IConfiguration configuration)
         {
             _repo = repo;
             _mapper = mapper;
+            _paymentDataClient = paymentDataClient;
             _httpClient = httpClient;
             _configuration = configuration;
         }
 
+        // [HttpPost]
+        // public async Task<ActionResult> Post(EnrollmentDto enrollmentDto)
+        // {
+        //     var content = await _paymentDataClient.PostCallAPI(enrollmentDto);
+        //     Console.WriteLine("--> Inbound POST Payment Service");
+        //     try
+        //     {
+        //         var enrollment = _mapper.Map<Enrollment>(content);
+        //         var result = await _repo.Insert(enrollment);
+        //         var enrollmentReturn = _mapper.Map<EnrollmentDto>(result);
+        //         return Ok(enrollmentReturn);
+        //     }
+        //     catch (System.Exception ex)
+        //     {
+        //         Console.WriteLine("insert gagal");
+        //         return BadRequest(ex.Message);
+        //     }
+        // }
         [HttpPost]
-        public async Task<ActionResult<EnrollmentDto>> Post(EnrollmentCreateDto enrollmentCreateDto)
-        {
-            // var httpContent = new StringContent(
-            //     jsonObject.ToString(),
-            //     Encoding.UTF8,"application/json");
-            // var response = await _httpClient.PostAsync(_configuration["PaymentService"],
-            //     httpContent);
-            await PostCallAPI(enrollmentCreateDto);
-            try
-            {
-                var enrollment = _mapper.Map<Enrollment>(enrollmentCreateDto);
-                var result = await _repo.Insert(enrollment);
-                var enrollmentReturn = _mapper.Map<EnrollmentDto>(result);
-                return Ok(enrollmentReturn);
-            }
-            catch (System.Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+        public async Task<ActionResult> TestIndboundConnection(EnrollmentDto enrollmentDto){
+            var post = await _httpClient.GetFromJsonAsync<EnrollmentDto>(_configuration["PaymentService"]);
+            // return post;
+            Console.WriteLine($"--> Hasil deserialize json: {post}");
+            return Ok("Inbound test from platforms controller");
         }
-        
-        
-        public async Task<object> PostCallAPI(object jsonObject)
+
+
+        /*public async Task<object> PostCallAPI(object jsonObject)
         {
             try
             {
@@ -86,6 +95,6 @@ namespace PaymentService.Controllers
                 return ex.Message;
             }
             return null;
-        }
+        }*/
     }
 }
