@@ -1,0 +1,5 @@
+D:\AGIT BOOTCAMP\StudiKasusMg4\Twittor\KafkaApp\obj\Debug\net5.0\KafkaApp.csproj.AssemblyReference.cache
+D:\AGIT BOOTCAMP\StudiKasusMg4\Twittor\KafkaApp\obj\Debug\net5.0\KafkaApp.GeneratedMSBuildEditorConfig.editorconfig
+D:\AGIT BOOTCAMP\StudiKasusMg4\Twittor\KafkaApp\obj\Debug\net5.0\KafkaApp.AssemblyInfoInputs.cache
+D:\AGIT BOOTCAMP\StudiKasusMg4\Twittor\KafkaApp\obj\Debug\net5.0\KafkaApp.AssemblyInfo.cs
+D:\AGIT BOOTCAMP\StudiKasusMg4\Twittor\KafkaApp\obj\Debug\net5.0\KafkaApp.csproj.CoreCompileInputs.cache

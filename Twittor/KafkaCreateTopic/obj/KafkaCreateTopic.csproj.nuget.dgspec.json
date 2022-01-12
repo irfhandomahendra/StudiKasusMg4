@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\KafkaCreateTopic\\KafkaCreateTopic.csproj": {}
+    "d:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\KafkaCreateTopic\\KafkaCreateTopic.csproj": {}
   },
   "projects": {
-    "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\KafkaCreateTopic\\KafkaCreateTopic.csproj": {
+    "d:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\KafkaCreateTopic\\KafkaCreateTopic.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\KafkaCreateTopic\\KafkaCreateTopic.csproj",
+        "projectUniqueName": "d:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\KafkaCreateTopic\\KafkaCreateTopic.csproj",
         "projectName": "KafkaCreateTopic",
-        "projectPath": "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\KafkaCreateTopic\\KafkaCreateTopic.csproj",
+        "projectPath": "d:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\KafkaCreateTopic\\KafkaCreateTopic.csproj",
         "packagesPath": "C:\\Users\\Irfhando Mahendra\\.nuget\\packages\\",
-        "outputPath": "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\KafkaCreateTopic\\obj\\",
+        "outputPath": "d:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\KafkaCreateTopic\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Irfhando Mahendra\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -39,6 +39,20 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
+          "dependencies": {
+            "Confluent.Kafka": {
+              "target": "Package",
+              "version": "[1.8.2, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using API.Auth;
 using API.Data;
 using API.Dtos;
 using API.Kafka;

@@ -1,8 +1,20 @@
 {
   "version": 2,
-  "dgSpecHash": "20dxkp5JTVno/FzrEEkNTAcCMV3FYBH7OUHntmc906IFJkknH9jxlHFz9pAyZmuhMG9EtMgFEuSSaq9GehH8Dw==",
+  "dgSpecHash": "aWu1v3riFHeMnjCCQZaHymwo7MdDzl1JOh/apaZ/kA9i7F7rxihSP1Ve0lbT9g17aeOWVt51UC5qLZJoSga7Pw==",
   "success": true,
-  "projectFilePath": "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\KafkaListeningApp\\KafkaListeningApp.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "d:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\KafkaListeningApp\\KafkaListeningApp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Irfhando Mahendra\\.nuget\\packages\\confluent.kafka\\1.8.2\\confluent.kafka.1.8.2.nupkg.sha512",
+    "C:\\Users\\Irfhando Mahendra\\.nuget\\packages\\librdkafka.redist\\1.8.2\\librdkafka.redist.1.8.2.nupkg.sha512",
+    "C:\\Users\\Irfhando Mahendra\\.nuget\\packages\\microsoft.extensions.configuration\\5.0.0\\microsoft.extensions.configuration.5.0.0.nupkg.sha512",
+    "C:\\Users\\Irfhando Mahendra\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\5.0.0\\microsoft.extensions.configuration.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\Irfhando Mahendra\\.nuget\\packages\\microsoft.extensions.configuration.fileextensions\\5.0.0\\microsoft.extensions.configuration.fileextensions.5.0.0.nupkg.sha512",
+    "C:\\Users\\Irfhando Mahendra\\.nuget\\packages\\microsoft.extensions.configuration.json\\5.0.0\\microsoft.extensions.configuration.json.5.0.0.nupkg.sha512",
+    "C:\\Users\\Irfhando Mahendra\\.nuget\\packages\\microsoft.extensions.fileproviders.abstractions\\5.0.0\\microsoft.extensions.fileproviders.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\Irfhando Mahendra\\.nuget\\packages\\microsoft.extensions.fileproviders.physical\\5.0.0\\microsoft.extensions.fileproviders.physical.5.0.0.nupkg.sha512",
+    "C:\\Users\\Irfhando Mahendra\\.nuget\\packages\\microsoft.extensions.filesystemglobbing\\5.0.0\\microsoft.extensions.filesystemglobbing.5.0.0.nupkg.sha512",
+    "C:\\Users\\Irfhando Mahendra\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512",
+    "C:\\Users\\Irfhando Mahendra\\.nuget\\packages\\system.memory\\4.5.0\\system.memory.4.5.0.nupkg.sha512"
+  ],
   "logs": []
 }
