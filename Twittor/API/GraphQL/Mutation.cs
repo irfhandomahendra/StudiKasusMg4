@@ -90,6 +90,7 @@ namespace API.GraphQL
             await context.SaveChangesAsync();
 
             return await Task.FromResult(new UserRoleDto{
+                Id = newUserRole.Id,
                 UserId = newUserRole.UserId,
                 RoleId = newUserRole.RoleId
             });
@@ -139,6 +140,38 @@ namespace API.GraphQL
             }
 
             return await Task.FromResult(new UserToken(null, null, Message: "Username or password was invalid"));
+        }
+
+        public async Task<User> UpdateProfilAsync(
+            ProfileInput input,
+            [Service] AppDbContext context)
+        {
+            var profile = context.Users.Where(o => o.Id == input.Id).FirstOrDefault();
+            if (profile!= null){
+                profile.FullName = input.FullName;
+                profile.Email = input.Email;
+                profile.Username = input.Username;
+                profile.Password = BCrypt.Net.BCrypt.HashPassword(input.Password);
+
+                context.Users.Update(profile);
+                await context.SaveChangesAsync();
+            }
+            return await Task.FromResult(profile);
+        }
+
+        public async Task<User> ChangePasswordAsync(
+            ChangePasswordInput input,
+            [Service] AppDbContext context
+        )
+        {
+            var akun = context.Users.Where(o=>o.Username==input.Username).FirstOrDefault();
+            if(akun!=null){
+                akun.Password=BCrypt.Net.BCrypt.HashPassword(input.Password);
+
+                context.Users.Update(akun);
+                await context.SaveChangesAsync();
+            }
+            return await Task.FromResult(akun);
         }
 
     }
