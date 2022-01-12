@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using API.Data;
 using API.GraphQL;
+using API.Kafka;
 using API.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
