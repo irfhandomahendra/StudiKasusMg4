@@ -116,7 +116,9 @@ namespace API.GraphQL
                 var claims = new List<Claim>();
                 claims.Add(new Claim(ClaimTypes.Name, user.Username));
 
-                foreach (var userRole in user.UserRoles)
+                var userRoles = context.UserRoles.Where(o => o.UserId == user.Id).ToList();
+
+                foreach (var userRole in userRoles)
                 {
                     var role = context.Roles.Where(o => o.Id == userRole.RoleId).FirstOrDefault();
                     if (role != null)
@@ -203,7 +205,8 @@ namespace API.GraphQL
                 context.UserRoles.Update(userRole);
                 await context.SaveChangesAsync();
             };
-            return await Task.FromResult(new UserRoleDto{
+            return await Task.FromResult(new UserRoleDto
+            {
                 UserId = input.UserId,
                 RoleId = input.RoleId,
                 Message = "User Role has been changed"
@@ -215,19 +218,24 @@ namespace API.GraphQL
             [Service] AppDbContext context
         )
         {
-            var userRole = context.UserRoles.Where(o => o.UserId == input.UserId).FirstOrDefault();
-            if (userRole != null)
+            var userRoles = context.UserRoles.Where(o => o.UserId == input.UserId).ToList();
+            foreach (var userRole in userRoles)
             {
-                context.UserRoles.Remove(userRole);
-                await context.SaveChangesAsync();
-            };
-            return await Task.FromResult(new UserRoleDto{
+                if (userRole != null)
+                {
+                    context.UserRoles.Remove(userRole);
+                    await context.SaveChangesAsync();
+                };
+            }
+
+            return await Task.FromResult(new UserRoleDto
+            {
                 UserId = input.UserId,
                 RoleId = input.RoleId,
                 Message = "User has been Locked, re-add user to roles to grant back user access"
             });
         }
 
-        
+
     }
 }
