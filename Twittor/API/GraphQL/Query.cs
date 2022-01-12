@@ -22,7 +22,7 @@ namespace API.GraphQL
         {
             var key = "GetTwittors-" + DateTime.Now.ToString();
             var val = JObject.FromObject(new { Message = "GraphQL Query GetTwittors" }).ToString(Formatting.None);
-            await KafkaHelper.SendMessage(kafkaSettings.Value, "logging", key, val);
+            await KafkaHelper.SendMessage(kafkaSettings.Value, "Logging", key, val);
             return context.Twittors.Select(t=> new TwittorDto(){
                 Id = t.Id,
                 UserId = t.UserId,
@@ -39,7 +39,7 @@ namespace API.GraphQL
             var key = "GetTwittorById-" + DateTime.Now.ToString();
             var val = JObject.FromObject(new { Message = "GraphQL Query GetTwittorById" }).ToString(Formatting.None);
 
-            await KafkaHelper.SendMessage(kafkaSettings.Value, "logging", key, val);
+            await KafkaHelper.SendMessage(kafkaSettings.Value, "Logging", key, val);
 
             var twittor = context.Twittors.Include(c => c.Comments).
             Where(t => t.Id == id);
@@ -59,7 +59,7 @@ namespace API.GraphQL
         {
             var key = "GetProfiles-" + DateTime.Now.ToString();
             var val = JObject.FromObject(new { Message = "GraphQL Query GetProfiles" }).ToString(Formatting.None);
-            await KafkaHelper.SendMessage(kafkaSettings.Value, "logging", key, val);
+            await KafkaHelper.SendMessage(kafkaSettings.Value, "Logging", key, val);
             return context.Users.Select(p=> new UserDto(){
                 Id = p.Id,
                 Fullname = p.Fullname,

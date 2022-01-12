@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\KafkaCreateTopic\\KafkaCreateTopic.csproj": {}
+    "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\KafkaCreateTopic\\KafkaCreateTopic.csproj": {}
   },
   "projects": {
-    "d:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\KafkaCreateTopic\\KafkaCreateTopic.csproj": {
+    "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\KafkaCreateTopic\\KafkaCreateTopic.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\KafkaCreateTopic\\KafkaCreateTopic.csproj",
+        "projectUniqueName": "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\KafkaCreateTopic\\KafkaCreateTopic.csproj",
         "projectName": "KafkaCreateTopic",
-        "projectPath": "d:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\KafkaCreateTopic\\KafkaCreateTopic.csproj",
+        "projectPath": "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\KafkaCreateTopic\\KafkaCreateTopic.csproj",
         "packagesPath": "C:\\Users\\Irfhando Mahendra\\.nuget\\packages\\",
-        "outputPath": "d:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\KafkaCreateTopic\\obj\\",
+        "outputPath": "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\KafkaCreateTopic\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Irfhando Mahendra\\AppData\\Roaming\\NuGet\\NuGet.Config",

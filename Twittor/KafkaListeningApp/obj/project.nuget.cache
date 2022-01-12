@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "aWu1v3riFHeMnjCCQZaHymwo7MdDzl1JOh/apaZ/kA9i7F7rxihSP1Ve0lbT9g17aeOWVt51UC5qLZJoSga7Pw==",
+  "dgSpecHash": "/YWIOt4KEmxrcYWXcplxdoqukC+8g7enVFekurfPgl2Y93AqxKOpoqleZLw1w40u2X+80csaSi9PNlg2r06LsQ==",
   "success": true,
-  "projectFilePath": "d:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\KafkaListeningApp\\KafkaListeningApp.csproj",
+  "projectFilePath": "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\KafkaListeningApp\\KafkaListeningApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Irfhando Mahendra\\.nuget\\packages\\confluent.kafka\\1.8.2\\confluent.kafka.1.8.2.nupkg.sha512",
     "C:\\Users\\Irfhando Mahendra\\.nuget\\packages\\librdkafka.redist\\1.8.2\\librdkafka.redist.1.8.2.nupkg.sha512",

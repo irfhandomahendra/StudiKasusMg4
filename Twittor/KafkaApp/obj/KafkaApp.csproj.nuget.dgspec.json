@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\KafkaApp\\KafkaApp.csproj": {}
+    "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\KafkaApp\\KafkaApp.csproj": {}
   },
   "projects": {
-    "d:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\KafkaApp\\KafkaApp.csproj": {
+    "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\KafkaApp\\KafkaApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\KafkaApp\\KafkaApp.csproj",
+        "projectUniqueName": "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\KafkaApp\\KafkaApp.csproj",
         "projectName": "KafkaApp",
-        "projectPath": "d:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\KafkaApp\\KafkaApp.csproj",
+        "projectPath": "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\KafkaApp\\KafkaApp.csproj",
         "packagesPath": "C:\\Users\\Irfhando Mahendra\\.nuget\\packages\\",
-        "outputPath": "d:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\KafkaApp\\obj\\",
+        "outputPath": "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\KafkaApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Irfhando Mahendra\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -21,7 +21,7 @@ namespace KafkaListeningApp
                 GroupId = "tester",
                 AutoOffsetReset = AutoOffsetReset.Earliest
             };
-            var topic = "logging";
+            var topic = "Logging";
             CancellationTokenSource cts = new CancellationTokenSource();
             Console.CancelKeyPress += (_, e) => {
                 e.Cancel = true; // prevent the process from terminating.
