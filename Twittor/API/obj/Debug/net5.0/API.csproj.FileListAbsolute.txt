@@ -102,3 +102,6 @@ D:\AGIT BOOTCAMP\StudiKasusMg4\Twittor\API\obj\Debug\net5.0\API.dll
 D:\AGIT BOOTCAMP\StudiKasusMg4\Twittor\API\obj\Debug\net5.0\ref\API.dll
 D:\AGIT BOOTCAMP\StudiKasusMg4\Twittor\API\obj\Debug\net5.0\API.pdb
 D:\AGIT BOOTCAMP\StudiKasusMg4\Twittor\API\obj\Debug\net5.0\API.genruntimeconfig.cache
+D:\AGIT BOOTCAMP\StudiKasusMg4\Twittor\API\bin\Debug\net5.0\BCrypt.Net-Next.dll
+D:\AGIT BOOTCAMP\StudiKasusMg4\Twittor\API\bin\Debug\net5.0\HotChocolate.AspNetCore.Authorization.dll
+D:\AGIT BOOTCAMP\StudiKasusMg4\Twittor\API\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
