@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\API\\API.csproj": {}
+    "d:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\API\\API.csproj": {}
   },
   "projects": {
-    "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\API\\API.csproj": {
+    "d:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\API\\API.csproj",
+        "projectUniqueName": "d:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\API\\API.csproj",
+        "projectPath": "d:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\API\\API.csproj",
         "packagesPath": "C:\\Users\\Irfhando Mahendra\\.nuget\\packages\\",
-        "outputPath": "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\API\\obj\\",
+        "outputPath": "d:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Irfhando Mahendra\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,6 +40,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "BCrypt.Net-Next": {
+              "target": "Package",
+              "version": "[4.0.2, )"
+            },
             "Confluent.Kafka": {
               "target": "Package",
               "version": "[1.8.2, )"
@@ -47,6 +51,14 @@
             "HotChocolate.AspNetCore": {
               "target": "Package",
               "version": "[12.4.1, )"
+            },
+            "HotChocolate.AspNetCore.Authorization": {
+              "target": "Package",
+              "version": "[12.4.1, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[5.0.13, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
