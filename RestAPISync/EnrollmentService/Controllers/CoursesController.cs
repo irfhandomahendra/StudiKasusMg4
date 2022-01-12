@@ -6,10 +6,12 @@ using AutoMapper;
 using EnrollmentService.Data;
 using EnrollmentService.Dtos;
 using EnrollmentService.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EnrollmentService.Controllers
 {
+    [Authorize(Roles ="admin")]
     [ApiController]
     [Route("api/[controller]")]
     public class CoursesController : ControllerBase

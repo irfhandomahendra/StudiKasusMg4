@@ -12,6 +12,7 @@ namespace EnrollmentService.Profiles
         {
             CreateMap<Models.Enrollment, Dtos.EnrollmentDto>();
             CreateMap<Dtos.EnrollmentCreateDto, Models.Enrollment>();
+            CreateMap<Dtos.EnrollmentDto, Models.Enrollment>();
         }
     }
 }

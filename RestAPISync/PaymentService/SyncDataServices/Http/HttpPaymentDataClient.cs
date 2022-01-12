@@ -53,27 +53,34 @@ namespace PaymentService.SyncDataServices.Http
             // }
             // return null;
 
-            JsonSerializerOptions jsonSerializerOptions
-            = new JsonSerializerOptions
-            {
-                PropertyNameCaseInsensitive = true,
-                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
-            };
+            // JsonSerializerOptions jsonSerializerOptions
+            // = new JsonSerializerOptions
+            // {
+            //     PropertyNameCaseInsensitive = true,
+            //     PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+            // };
 
-            using var response = await _httpClient.GetAsync(_configuration["PaymentService"]);
-            response.EnsureSuccessStatusCode();
+            // using var response = await _httpClient.GetAsync(_configuration["PaymentService"]);
+            // response.EnsureSuccessStatusCode();
 
-            using var contentStream = await response.Content.ReadAsStreamAsync();
+            // using var contentStream = await response.Content.ReadAsStreamAsync();
 
-            var posts = await JsonSerializer.DeserializeAsync<EnrollmentDto>
-                (contentStream, jsonSerializerOptions);
+            // var posts = await JsonSerializer.DeserializeAsync<EnrollmentDto>
+            //     (contentStream, jsonSerializerOptions);
+
+            // return posts;
+
+
+
+            var post = await _httpClient.GetFromJsonAsync<EnrollmentDto>(_configuration["PaymentService"]);
+            return post;
+        }
+
+        public async Task<IEnumerable<EnrollmentDto>> GetPostsAsync()
+        {
+            var posts = await _httpClient.GetFromJsonAsync<IEnumerable<EnrollmentDto>>("https://localhost:6001/api/p/enrollments");
 
             return posts;
-
-
-
-            // var post = await _httpClient.GetFromJsonAsync<EnrollmentDto>(_configuration["PaymentService"]);
-            // return post;
         }
     }
 }

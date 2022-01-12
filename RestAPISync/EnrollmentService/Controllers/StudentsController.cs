@@ -5,10 +5,12 @@ using System.Threading.Tasks;
 using AutoMapper;
 using EnrollmentService.Data;
 using EnrollmentService.Dtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EnrollmentService.Controllers
 {
+    [Authorize(Roles ="admin")]
     [ApiController]
     [Route("api/[controller]")]
     public class StudentsController : ControllerBase

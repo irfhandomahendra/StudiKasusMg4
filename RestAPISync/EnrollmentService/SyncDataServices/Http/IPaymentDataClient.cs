@@ -9,6 +9,7 @@ namespace EnrollmentService.SyncDataServices.Http
 {
     public interface IPaymentDataClient
     {
-        Task SendEnrollmentToPayment (EnrollmentDto enroll);
+        Task<object> SendEnrollmentToPayment (object jsonObject);
+        Task SendPostAsync(EnrollmentDto post);
     }
 }

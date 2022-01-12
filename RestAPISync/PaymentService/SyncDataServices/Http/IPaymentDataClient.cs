@@ -9,5 +9,6 @@ namespace PaymentService.SyncDataServices.Http
     public interface IPaymentDataClient
     {
         public Task<EnrollmentDto> PostCallAPI(EnrollmentDto jsonObject);
+        Task<IEnumerable<EnrollmentDto>> GetPostsAsync();
     }
 }

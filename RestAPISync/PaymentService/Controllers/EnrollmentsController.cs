@@ -56,10 +56,9 @@ namespace PaymentService.Controllers
         //     }
         // }
         [HttpPost]
-        public async Task<ActionResult> TestIndboundConnection(EnrollmentDto enrollmentDto){
-            var post = await _httpClient.GetFromJsonAsync<EnrollmentDto>(_configuration["PaymentService"]);
-            // return post;
-            Console.WriteLine($"--> Hasil deserialize json: {post}");
+        public ActionResult TestIndboundConnection(EnrollmentDto enrollmentDto){
+            var result = _paymentDataClient.GetPostsAsync();
+            Console.WriteLine($"--> Hasil deserialize json: {result}");
             return Ok("Inbound test from platforms controller");
         }
 
