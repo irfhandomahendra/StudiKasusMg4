@@ -73,7 +73,7 @@ namespace API.GraphQL
             UserRoleInput input,
             [Service] AppDbContext context)
         {
-            var userRole = context.UserRoles.Where(o => o.UserId == input.UserId && 
+            var userRole = context.UserRoles.Where(o => o.UserId == input.UserId &&
             o.RoleId == input.RoleId).FirstOrDefault();
             if (userRole != null)
             {
@@ -89,7 +89,8 @@ namespace API.GraphQL
             var ret = context.UserRoles.Add(newUserRole);
             await context.SaveChangesAsync();
 
-            return await Task.FromResult(new UserRoleDto{
+            return await Task.FromResult(new UserRoleDto
+            {
                 Id = newUserRole.Id,
                 UserId = newUserRole.UserId,
                 RoleId = newUserRole.RoleId
@@ -142,12 +143,13 @@ namespace API.GraphQL
             return await Task.FromResult(new UserToken(null, null, Message: "Username or password was invalid"));
         }
 
-        public async Task<User> UpdateProfilAsync(
+        public async Task<UserDto> EditProfilAsync(
             ProfileInput input,
             [Service] AppDbContext context)
         {
             var profile = context.Users.Where(o => o.Id == input.Id).FirstOrDefault();
-            if (profile!= null){
+            if (profile != null)
+            {
                 profile.FullName = input.FullName;
                 profile.Email = input.Email;
                 profile.Username = input.Username;
@@ -156,23 +158,76 @@ namespace API.GraphQL
                 context.Users.Update(profile);
                 await context.SaveChangesAsync();
             }
-            return await Task.FromResult(profile);
+            return await Task.FromResult(new UserDto
+            {
+                Id = profile.Id,
+                Username = profile.Username,
+                Email = profile.Email,
+                FullName = profile.FullName,
+                Message = "Profile Updated"
+            });
         }
 
-        public async Task<User> ChangePasswordAsync(
+        public async Task<UserDto> ChangePasswordAsync(
             ChangePasswordInput input,
             [Service] AppDbContext context
         )
         {
-            var akun = context.Users.Where(o=>o.Username==input.Username).FirstOrDefault();
-            if(akun!=null){
-                akun.Password=BCrypt.Net.BCrypt.HashPassword(input.Password);
+            var akun = context.Users.Where(o => o.Username == input.Username).FirstOrDefault();
+            if (akun != null)
+            {
+                akun.Password = BCrypt.Net.BCrypt.HashPassword(input.Password);
 
                 context.Users.Update(akun);
                 await context.SaveChangesAsync();
             }
-            return await Task.FromResult(akun);
+            return await Task.FromResult(new UserDto
+            {
+                Id = akun.Id,
+                Username = akun.Username,
+                Email = akun.Email,
+                FullName = akun.FullName,
+                Message = "Password Succesfully Changed"
+            });
         }
 
+        public async Task<UserRoleDto> ChangeUserRoleAsync(
+            UserRoleInput input,
+            [Service] AppDbContext context
+        )
+        {
+            var userRole = context.UserRoles.Where(o => o.UserId == input.UserId).FirstOrDefault();
+            if (userRole != null)
+            {
+                userRole.RoleId = input.RoleId;
+                context.UserRoles.Update(userRole);
+                await context.SaveChangesAsync();
+            };
+            return await Task.FromResult(new UserRoleDto{
+                UserId = input.UserId,
+                RoleId = input.RoleId,
+                Message = "User Role has been changed"
+            });
+        }
+
+        public async Task<UserRoleDto> LockUserAsync(
+            UserRoleInput input,
+            [Service] AppDbContext context
+        )
+        {
+            var userRole = context.UserRoles.Where(o => o.UserId == input.UserId).FirstOrDefault();
+            if (userRole != null)
+            {
+                context.UserRoles.Remove(userRole);
+                await context.SaveChangesAsync();
+            };
+            return await Task.FromResult(new UserRoleDto{
+                UserId = input.UserId,
+                RoleId = input.RoleId,
+                Message = "User has been Locked, re-add user to roles to grant back user access"
+            });
+        }
+
+        
     }
 }
