@@ -31,7 +31,7 @@ namespace API.GraphQL
             }
             var newUser = new User
             {
-                FullName = input.FullName,
+                Fullname = input.FullName,
                 Email = input.Email,
                 Username = input.UserName,
                 Password = BCrypt.Net.BCrypt.HashPassword(input.Password)
@@ -165,7 +165,7 @@ namespace API.GraphQL
             var profile = context.Users.Where(o => o.Id == input.Id).FirstOrDefault();
             if (profile != null)
             {
-                profile.FullName = input.FullName;
+                profile.Fullname = input.FullName;
                 profile.Email = input.Email;
                 profile.Username = input.Username;
                 profile.Password = BCrypt.Net.BCrypt.HashPassword(input.Password);
@@ -254,7 +254,7 @@ namespace API.GraphQL
 
                 if (!check)
                     return new TransactionStatus(false, "Failed to submit data");
-                return await Task.FromResult(new TransactionStatus(true,""));
+                return await Task.FromResult(new TransactionStatus(true, ""));
             }
             else
             {
@@ -262,6 +262,68 @@ namespace API.GraphQL
             }
         }
 
+        public async Task<TransactionStatus> AddTwittorAsync(
+            TwittorInput input,
+            [Service] IOptions<KafkaSettings> kafkaSettings)
+        {
+            var twittor = new Twittor
+            {
+                UserId = input.UserId,
+                Message = input.Message,
+                Created = DateTime.Now
+            };
+            var key = "Twit-Add-" + DateTime.Now.ToString();
+            var val = JObject.FromObject(twittor).ToString(Formatting.None);
+            var result = await KafkaHelper.SendMessage(kafkaSettings.Value, "Twit", key, val);
+            await KafkaHelper.SendMessage(kafkaSettings.Value, "Logging", key, val);
+
+            var ret = new TransactionStatus(result, "");
+            if (!result)
+                ret = new TransactionStatus(result, "Failed to submit data");
+            return await Task.FromResult(ret);
+        }
+
+        public async Task<TransactionStatus> AddCommentAsync(
+            CommentInput input,
+            [Service] IOptions<KafkaSettings> kafkaSettings)
+        {
+            var comment = new Comment
+            {
+                TwittorId = input.TwittorId,
+                Message = input.Message
+            };
+            var key = "Comment-Add-" + DateTime.Now.ToString();
+            var val = JObject.FromObject(comment).ToString(Formatting.None);
+            var result = await KafkaHelper.SendMessage(kafkaSettings.Value, "Comment", key, val);
+            await KafkaHelper.SendMessage(kafkaSettings.Value, "Logging", key, val);
+
+            var ret = new TransactionStatus(result, "");
+            if (!result)
+                ret = new TransactionStatus(result, "Failed to submit data");
+            return await Task.FromResult(ret);
+        }
+
+        public async Task<TransactionStatus> DeleteTwittorAsync(
+            int userId,
+            [Service] AppDbContext context,
+            [Service] IOptions<KafkaSettings> kafkaSettings)
+        {
+            var twit = context.Twittors.Where(o => o.UserId == userId).ToList();
+            if (twit != null)
+            {
+                var key = "Delete-Twit-" + DateTime.Now.ToString();
+                var val = JObject.FromObject(twit).ToString(Formatting.None);
+                var result = await KafkaHelper.SendMessage(kafkaSettings.Value, "DeleteTwit", key, val);
+                await KafkaHelper.SendMessage(kafkaSettings.Value, "Logging", key, val);
+                var ret = new TransactionStatus(result, "");
+                if (!result)
+                    ret = new TransactionStatus(result, "Failed to submit data");
+                return await Task.FromResult(ret);
+            }
+            else{
+                return new TransactionStatus(false,"User has zero twit");
+            }
+        }
 
     }
 }

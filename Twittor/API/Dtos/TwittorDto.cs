@@ -1,19 +1,15 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace API.Models
+namespace API.Dtos
 {
-    public class Twittor
+    public class TwittorDto
     {
-        [Key]
         public int Id { get; set; }
         public int UserId { get; set; }
         public string Message { get; set; }
         public DateTime Created { get; set; }
-        public User User { get; set; }
-        public ICollection<Comment> Comments { get; set; }
     }
 }
