@@ -1,0 +1,16 @@
+D:\AGIT BOOTCAMP\StudiKasusMg4\Twittor\KafkaCreateTopic\bin\Debug\net5.0\KafkaCreateTopic.exe
+D:\AGIT BOOTCAMP\StudiKasusMg4\Twittor\KafkaCreateTopic\bin\Debug\net5.0\KafkaCreateTopic.deps.json
+D:\AGIT BOOTCAMP\StudiKasusMg4\Twittor\KafkaCreateTopic\bin\Debug\net5.0\KafkaCreateTopic.runtimeconfig.json
+D:\AGIT BOOTCAMP\StudiKasusMg4\Twittor\KafkaCreateTopic\bin\Debug\net5.0\KafkaCreateTopic.runtimeconfig.dev.json
+D:\AGIT BOOTCAMP\StudiKasusMg4\Twittor\KafkaCreateTopic\bin\Debug\net5.0\KafkaCreateTopic.dll
+D:\AGIT BOOTCAMP\StudiKasusMg4\Twittor\KafkaCreateTopic\bin\Debug\net5.0\ref\KafkaCreateTopic.dll
+D:\AGIT BOOTCAMP\StudiKasusMg4\Twittor\KafkaCreateTopic\bin\Debug\net5.0\KafkaCreateTopic.pdb
+D:\AGIT BOOTCAMP\StudiKasusMg4\Twittor\KafkaCreateTopic\obj\Debug\net5.0\KafkaCreateTopic.csproj.AssemblyReference.cache
+D:\AGIT BOOTCAMP\StudiKasusMg4\Twittor\KafkaCreateTopic\obj\Debug\net5.0\KafkaCreateTopic.GeneratedMSBuildEditorConfig.editorconfig
+D:\AGIT BOOTCAMP\StudiKasusMg4\Twittor\KafkaCreateTopic\obj\Debug\net5.0\KafkaCreateTopic.AssemblyInfoInputs.cache
+D:\AGIT BOOTCAMP\StudiKasusMg4\Twittor\KafkaCreateTopic\obj\Debug\net5.0\KafkaCreateTopic.AssemblyInfo.cs
+D:\AGIT BOOTCAMP\StudiKasusMg4\Twittor\KafkaCreateTopic\obj\Debug\net5.0\KafkaCreateTopic.csproj.CoreCompileInputs.cache
+D:\AGIT BOOTCAMP\StudiKasusMg4\Twittor\KafkaCreateTopic\obj\Debug\net5.0\KafkaCreateTopic.dll
+D:\AGIT BOOTCAMP\StudiKasusMg4\Twittor\KafkaCreateTopic\obj\Debug\net5.0\ref\KafkaCreateTopic.dll
+D:\AGIT BOOTCAMP\StudiKasusMg4\Twittor\KafkaCreateTopic\obj\Debug\net5.0\KafkaCreateTopic.pdb
+D:\AGIT BOOTCAMP\StudiKasusMg4\Twittor\KafkaCreateTopic\obj\Debug\net5.0\KafkaCreateTopic.genruntimeconfig.cache

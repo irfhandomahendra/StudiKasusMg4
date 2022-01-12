@@ -7,23 +7,27 @@ using System.Text;
 using System.Threading.Tasks;
 using API.Data;
 using API.Dtos;
+using API.Kafka;
 using API.Models;
 using HotChocolate;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace API.GraphQL
 {
     public class Mutation
     {
-        public async Task<UserDto> RegisterUserAsync(
+        public async Task<TransactionStatus> RegisterUserAsync(
             RegisterUser input,
-            [Service] AppDbContext context)
+            [Service] AppDbContext context,
+            [Service] IOptions<KafkaSettings> kafkaSettings)
         {
             var user = context.Users.Where(o => o.Username == input.UserName).FirstOrDefault();
             if (user != null)
             {
-                return await Task.FromResult(new UserDto());
+                return new TransactionStatus(false, "Username already exist");
             }
             var newUser = new User
             {
@@ -32,52 +36,55 @@ namespace API.GraphQL
                 Username = input.UserName,
                 Password = BCrypt.Net.BCrypt.HashPassword(input.Password)
             };
+            var key = "User-Add" + DateTime.Now.ToString();
+            var val = JObject.FromObject(newUser).ToString(Formatting.None);
+            var result = await KafkaHelper.SendMessage(kafkaSettings.Value, "User", key, val);
+            await KafkaHelper.SendMessage(kafkaSettings.Value, "Logging", key, val);
 
-            var ret = context.Users.Add(newUser);
-            await context.SaveChangesAsync();
+            var ret = new TransactionStatus(result, "");
+            if (!result)
+                ret = new TransactionStatus(result, "Failed to submit data");
 
-            return await Task.FromResult(new UserDto
-            {
-                Id = newUser.Id,
-                Username = newUser.Username,
-                Email = newUser.Email,
-                FullName = newUser.FullName
-            });
+            return await Task.FromResult(ret);
         }
 
-        public async Task<RoleDto> AddRoleAsync(
+        public async Task<TransactionStatus> AddRoleAsync(
             string roleName,
-            [Service] AppDbContext context)
+            [Service] AppDbContext context,
+            [Service] IOptions<KafkaSettings> kafkaSettings)
         {
             var role = context.Roles.Where(o => o.Name == roleName).FirstOrDefault();
             if (role != null)
             {
-                return await Task.FromResult(new RoleDto());
+                return new TransactionStatus(false, "Role already exist");
             }
             var newRole = new Role
             {
                 Name = roleName
             };
 
-            var ret = context.Roles.Add(newRole);
-            await context.SaveChangesAsync();
+            var key = "Role-Add-" + DateTime.Now.ToString();
+            var val = JObject.FromObject(newRole).ToString(Formatting.None);
+            var result = await KafkaHelper.SendMessage(kafkaSettings.Value, "Role", key, val);
+            await KafkaHelper.SendMessage(kafkaSettings.Value, "Logging", key, val);
 
-            return await Task.FromResult(new RoleDto
-            {
-                Id = newRole.Id,
-                Name = newRole.Name
-            });
+            var ret = new TransactionStatus(result, "");
+            if (!result)
+                ret = new TransactionStatus(result, "Failed to submit data");
+
+            return await Task.FromResult(ret);
         }
 
-        public async Task<UserRoleDto> AddRoleToUserAsync(
+        public async Task<TransactionStatus> AddRoleToUserAsync(
             UserRoleInput input,
-            [Service] AppDbContext context)
+            [Service] AppDbContext context,
+            [Service] IOptions<KafkaSettings> kafkaSettings)
         {
             var userRole = context.UserRoles.Where(o => o.UserId == input.UserId &&
             o.RoleId == input.RoleId).FirstOrDefault();
             if (userRole != null)
             {
-                return await Task.FromResult(new UserRoleDto());
+                return new TransactionStatus(false, "Role already exist in this user");
             }
 
             var newUserRole = new UserRole
@@ -86,21 +93,23 @@ namespace API.GraphQL
                 RoleId = input.RoleId
             };
 
-            var ret = context.UserRoles.Add(newUserRole);
-            await context.SaveChangesAsync();
+            var key = "User-Role-Add-" + DateTime.Now.ToString();
+            var val = JObject.FromObject(newUserRole).ToString(Formatting.None);
+            var result = await KafkaHelper.SendMessage(kafkaSettings.Value, "UserRole", key, val);
+            await KafkaHelper.SendMessage(kafkaSettings.Value, "Logging", key, val);
 
-            return await Task.FromResult(new UserRoleDto
-            {
-                Id = newUserRole.Id,
-                UserId = newUserRole.UserId,
-                RoleId = newUserRole.RoleId
-            });
+            var ret = new TransactionStatus(result, "");
+            if (!result)
+                ret = new TransactionStatus(result, "Failed to submit data");
+
+            return await Task.FromResult(ret);
         }
 
         public async Task<UserToken> LoginAsync(
             LoginUser input,
             [Service] IOptions<TokenSettings> tokenSettings,
-            [Service] AppDbContext context)
+            [Service] AppDbContext context,
+            [Service] IOptions<KafkaSettings> kafkaSettings)
         {
             var user = context.Users.Where(o => o.Username == input.Username).FirstOrDefault();
             if (user == null)
@@ -136,18 +145,22 @@ namespace API.GraphQL
                     signingCredentials: credentials
                 );
 
+                var key = "SignIn-" + DateTime.Now.ToString();
+                var val = JObject.FromObject(new { Message = $"{input.Username} has signed in" }).ToString(Formatting.None);
+                await KafkaHelper.SendMessage(kafkaSettings.Value, "logging", key, val);
+
                 return await Task.FromResult(
                     new UserToken(new JwtSecurityTokenHandler().WriteToken(jwtToken),
                     expired.ToString(), null));
-                //return new JwtSecurityTokenHandler().WriteToken(jwtToken);
             }
 
             return await Task.FromResult(new UserToken(null, null, Message: "Username or password was invalid"));
         }
 
-        public async Task<UserDto> EditProfilAsync(
+        public async Task<TransactionStatus> EditProfilAsync(
             ProfileInput input,
-            [Service] AppDbContext context)
+            [Service] AppDbContext context,
+            [Service] IOptions<KafkaSettings> kafkaSettings)
         {
             var profile = context.Users.Where(o => o.Id == input.Id).FirstOrDefault();
             if (profile != null)
@@ -157,83 +170,96 @@ namespace API.GraphQL
                 profile.Username = input.Username;
                 profile.Password = BCrypt.Net.BCrypt.HashPassword(input.Password);
 
-                context.Users.Update(profile);
-                await context.SaveChangesAsync();
+                var key = "Edit-Profile-" + DateTime.Now.ToString();
+                var val = JObject.FromObject(profile).ToString(Formatting.None);
+                var result = await KafkaHelper.SendMessage(kafkaSettings.Value, "EditProfile", key, val);
+                await KafkaHelper.SendMessage(kafkaSettings.Value, "Logging", key, val);
+
+                var ret = new TransactionStatus(result, "");
+                if (!result)
+                    ret = new TransactionStatus(result, "Failed to submit data");
+                return await Task.FromResult(ret);
             }
-            return await Task.FromResult(new UserDto
+            else
             {
-                Id = profile.Id,
-                Username = profile.Username,
-                Email = profile.Email,
-                FullName = profile.FullName,
-                Message = "Profile Updated"
-            });
+                return new TransactionStatus(false, "Profile doesn't exist");
+            }
         }
 
-        public async Task<UserDto> ChangePasswordAsync(
+        public async Task<TransactionStatus> ChangePasswordAsync(
             ChangePasswordInput input,
-            [Service] AppDbContext context
-        )
+            [Service] AppDbContext context,
+            [Service] IOptions<KafkaSettings> kafkaSettings)
         {
             var akun = context.Users.Where(o => o.Username == input.Username).FirstOrDefault();
             if (akun != null)
             {
                 akun.Password = BCrypt.Net.BCrypt.HashPassword(input.Password);
+                var key = "Change-Password-" + DateTime.Now.ToString();
+                var val = JObject.FromObject(akun).ToString(Formatting.None);
+                var result = await KafkaHelper.SendMessage(kafkaSettings.Value, "ChangePassword", key, val);
+                await KafkaHelper.SendMessage(kafkaSettings.Value, "Logging", key, val);
 
-                context.Users.Update(akun);
-                await context.SaveChangesAsync();
+                var ret = new TransactionStatus(result, "");
+                if (!result)
+                    ret = new TransactionStatus(result, "Failed to submit data");
+                return await Task.FromResult(ret);
             }
-            return await Task.FromResult(new UserDto
+            else
             {
-                Id = akun.Id,
-                Username = akun.Username,
-                Email = akun.Email,
-                FullName = akun.FullName,
-                Message = "Password Succesfully Changed"
-            });
+                return new TransactionStatus(false, "User doesn't exist");
+            }
         }
 
-        public async Task<UserRoleDto> ChangeUserRoleAsync(
+        public async Task<TransactionStatus> ChangeUserRoleAsync(
             UserRoleInput input,
-            [Service] AppDbContext context
-        )
+            [Service] AppDbContext context,
+            [Service] IOptions<KafkaSettings> kafkaSettings)
         {
             var userRole = context.UserRoles.Where(o => o.UserId == input.UserId).FirstOrDefault();
             if (userRole != null)
             {
                 userRole.RoleId = input.RoleId;
-                context.UserRoles.Update(userRole);
-                await context.SaveChangesAsync();
+                var key = "Change-Role-" + DateTime.Now.ToString();
+                var val = JObject.FromObject(userRole).ToString(Formatting.None);
+                var result = await KafkaHelper.SendMessage(kafkaSettings.Value, "ChangeRole", key, val);
+                await KafkaHelper.SendMessage(kafkaSettings.Value, "Logging", key, val);
+
+                var ret = new TransactionStatus(result, "");
+                if (!result)
+                    ret = new TransactionStatus(result, "Failed to submit data");
+                return await Task.FromResult(ret);
             };
-            return await Task.FromResult(new UserRoleDto
-            {
-                UserId = input.UserId,
-                RoleId = input.RoleId,
-                Message = "User Role has been changed"
-            });
+            return new TransactionStatus(false, "User doesn't exist");
         }
 
-        public async Task<UserRoleDto> LockUserAsync(
+        public async Task<TransactionStatus> LockUserAsync(
             UserRoleInput input,
-            [Service] AppDbContext context
-        )
+            [Service] AppDbContext context,
+            [Service] IOptions<KafkaSettings> kafkaSettings)
         {
             var userRoles = context.UserRoles.Where(o => o.UserId == input.UserId).ToList();
-            foreach (var userRole in userRoles)
+            bool check = false;
+            if (userRoles != null)
             {
-                if (userRole != null)
+                foreach (var userRole in userRoles)
                 {
-                    context.UserRoles.Remove(userRole);
-                    await context.SaveChangesAsync();
+                    var key = "Lock-User-" + DateTime.Now.ToString();
+                    var val = JObject.FromObject(userRole).ToString(Formatting.None);
+                    var result = await KafkaHelper.SendMessage(kafkaSettings.Value, "LockUser", key, val);
+                    await KafkaHelper.SendMessage(kafkaSettings.Value, "Logging", key, val);
+                    var ret = new TransactionStatus(result, "");
+                    check = true;
                 };
-            }
 
-            return await Task.FromResult(new UserRoleDto
+                if (!check)
+                    return new TransactionStatus(false, "Failed to submit data");
+                return await Task.FromResult(new TransactionStatus(true,""));
+            }
+            else
             {
-                UserId = input.UserId,
-                RoleId = input.RoleId,
-                Message = "User has been Locked, re-add user to roles to grant back user access"
-            });
+                return new TransactionStatus(false, "User doesnt have any role yet");
+            }
         }
 
 

@@ -6,7 +6,13 @@ namespace KafkaCreateTopic
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            bool a = false;
+            var i = 1;
+            if(i==1){
+                a = true;
+            }
+            
+            Console.WriteLine(a);
         }
     }
 }
