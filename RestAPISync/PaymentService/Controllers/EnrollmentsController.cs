@@ -33,30 +33,13 @@ namespace PaymentService.Controllers
             _configuration = configuration;
         }
 
-        // [HttpPost]
-        // public async Task<ActionResult> Post(EnrollmentDto enrollmentDto)
-        // {
-        //     var content = await _paymentDataClient.PostCallAPI(enrollmentDto);
-        //     Console.WriteLine("--> Inbound POST Payment Service");
-        //     try
-        //     {
-        //         var enrollment = _mapper.Map<Enrollment>(content);
-        //         var result = await _repo.Insert(enrollment);
-        //         var enrollmentReturn = _mapper.Map<EnrollmentDto>(result);
-        //         return Ok(enrollmentReturn);
-        //     }
-        //     catch (System.Exception ex)
-        //     {
-        //         Console.WriteLine("insert gagal");
-        //         return BadRequest(ex.Message);
-        //     }
-        // }
         [HttpPost]
         public async Task<ActionResult<EnrollmentDto>> Post([FromBody] EnrollmentCreateDto enrollmentCreateDto){
             try
             {
                 var enrollment = _mapper.Map<Enrollment>(enrollmentCreateDto);
                 var result = await _repo.Insert(enrollment);
+                Console.WriteLine("--> Enrollment succesfully added!");
                 return Ok(_mapper.Map<EnrollmentDto>(result));
             }
             catch (System.Exception ex)
@@ -64,39 +47,5 @@ namespace PaymentService.Controllers
                 return BadRequest(ex.Message);                
             }
         }
-
-
-        /*public async Task<object> PostCallAPI(object jsonObject)
-        {
-            try
-            {
-                var httpContent = new StringContent(
-                jsonObject.ToString(),
-                Encoding.UTF8,"application/json");
-                var response = await _httpClient.PostAsync(_configuration["PaymentService"],
-                httpContent);
-                if (response != null)
-                    {
-                        var jsonString = await response.Content.ReadAsStringAsync();
-                        return JsonConvert.DeserializeObject<object>(jsonString);
-                    }
-                
-                // using (HttpClient client = new HttpClient())
-                // {
-                //     var content = new StringContent(jsonObject.ToString(), Encoding.UTF8, "application/json");
-                //     var response = await client.PostAsync(url, content);
-                //     if (response != null)
-                //     {
-                //         var jsonString = await response.Content.ReadAsStringAsync();
-                //         return JsonConvert.DeserializeObject<object>(jsonString);
-                //     }
-                // }
-            }
-            catch (Exception ex)
-            {
-                return ex.Message;
-            }
-            return null;
-        }*/
     }
 }
