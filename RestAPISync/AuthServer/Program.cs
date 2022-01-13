@@ -23,7 +23,7 @@ namespace AuthServer
                 var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
                 db.Database.Migrate(); // apply the migrations
             }
-
+            Console.WriteLine("Database Migration");
             host.Run(); // start handling requests
         }
 
