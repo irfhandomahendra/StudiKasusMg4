@@ -24,7 +24,7 @@ namespace EnrollmentService.SyncDataServices.Http
         {
             var myContent = JsonSerializer.Serialize(post);
             var data = new StringContent(myContent, Encoding.UTF8, "application/json");
-            var response = await _httpClient.PostAsync(_configuration[$"PaymentService"], data);
+            var response = await _httpClient.PostAsync(_configuration["PaymentService"], data);
             if (response.IsSuccessStatusCode)
             {
                 Console.WriteLine("--> Sync POST to PaymentService was OK !");
