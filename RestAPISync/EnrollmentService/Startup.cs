@@ -36,7 +36,7 @@ namespace EnrollmentService
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<AppDbContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("LocalConnection")));
+            options.UseSqlServer(Configuration.GetConnectionString("Database")));
 
             services.AddScoped<IStudent, StudentDAL>();
             services.AddScoped<ICourse, CourseDAL>();

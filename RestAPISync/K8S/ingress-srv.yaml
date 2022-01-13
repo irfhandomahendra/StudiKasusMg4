@@ -1,0 +1,54 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-srv
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/use-regex: 'true'
+spec:
+  rules:
+  - host: studikasus1.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/api/users"
+        backend:
+          service:
+            name: auth-clusterip-srv
+            port:
+              number: 80
+      - pathType: Prefix
+        path: "/api/courses"
+        backend:
+          service:
+            name: enrollment-clusterip-srv
+            port:
+              number: 80              
+      - pathType: Prefix
+        path: "/api/enrollments"
+        backend:
+          service:
+            name: enrollment-clusterip-srv
+            port:
+              number: 80
+      - pathType: Prefix
+        path: "/api/students"
+        backend:
+          service:
+            name: enrollment-clusterip-srv
+            port:
+              number: 80
+      - pathType: Prefix
+        path: "/api/p/enrollments"
+        backend:
+          service:
+            name: payment-clusterip-srv
+            port:
+              number: 80            
+      - pathType: Prefix
+        path: "/api/payments"
+        backend:
+          service:
+            name: payment-clusterip-srv
+            port:
+              number: 80        

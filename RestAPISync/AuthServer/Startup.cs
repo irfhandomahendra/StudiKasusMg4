@@ -34,7 +34,7 @@ namespace AuthServer
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<AppDbContext>(options => 
-            options.UseSqlServer(Configuration.GetConnectionString("LocalConnection")));
+            options.UseSqlServer(Configuration.GetConnectionString("Database")));
 
             services.AddIdentity<IdentityUser, IdentityRole>(options =>
             {
@@ -87,7 +87,7 @@ namespace AuthServer
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "AuthServer v1"));
             }
 
-            //app.UseHttpsRedirection();
+            app.UseHttpsRedirection();
 
             app.UseRouting();
 

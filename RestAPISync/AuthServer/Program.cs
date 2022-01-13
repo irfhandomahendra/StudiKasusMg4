@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AuthServer.Data;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -15,16 +16,15 @@ namespace AuthServer
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
             var host = CreateHostBuilder(args).Build();
 
-            // using (var scope = host.Services.CreateScope())
-            // {
-            //     var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-            //     db.Database.Migrate(); // apply the migrations
-            // }
+            using (var scope = host.Services.CreateScope())
+            {
+                var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+                db.Database.Migrate(); // apply the migrations
+            }
 
-            // host.Run(); // start handling requests
+            host.Run(); // start handling requests
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
