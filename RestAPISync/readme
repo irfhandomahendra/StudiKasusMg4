@@ -8,9 +8,11 @@ Run on container:
   7. cd dir paymentservice --> docker build -t irfhandomahendra/paymentservice .
   8. docker push irfhandomahendra/paymentservice
   9. kubectl apply -f payment-depl.yaml
-  10. kubectl local-pvc.yaml
-  11. kubectl create secret generic mssql --from-literal=SA_PASSWORD="Kosongkan@Saja"
-  12. kubectl mssql-depl.yaml
+  10. kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.0/deploy/static/provider/cloud/deploy.yaml
+  11. kubectl apply -f ingress-srv.yaml
+  12. kubectl local-pvc.yaml
+  13. kubectl create secret generic mssql --from-literal=SA_PASSWORD="Kosongkan@Saja"
+  14. kubectl mssql-depl.yaml
 
 Run on local:
   1. replace "LocalConnection" DI on each Startup.cs services with "Database"
