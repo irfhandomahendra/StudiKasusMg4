@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace EnrollmentService.Models
@@ -13,8 +14,9 @@ namespace EnrollmentService.Models
         public int CourseId { get; set; }
         public int StudentId { get; set; }
         public float? Invoice { get; set; }
-
+        [JsonIgnore]
         public Course Course { get; set; }
+        [JsonIgnore]
         public Student Student { get; set; }
     }
 }

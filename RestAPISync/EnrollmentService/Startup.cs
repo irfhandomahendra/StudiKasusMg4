@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EnrollmentService.Controllers;
 using EnrollmentService.Data;
 using EnrollmentService.Helpers;
 using EnrollmentService.SyncDataServices.Http;
@@ -41,6 +42,7 @@ namespace EnrollmentService
             services.AddScoped<ICourse, CourseDAL>();
             services.AddScoped<IEnrollment, EnrollmentDAL>();
             services.AddHttpClient<IPaymentDataClient, HttpPaymentDataClient>();
+            services.AddHttpClient<EnrollmentsController>();
 
             services.AddIdentity<IdentityUser, IdentityRole>(options =>
             {
@@ -93,7 +95,7 @@ namespace EnrollmentService
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "EnrollmentService v1"));
             }
 
-            //app.UseHttpsRedirection();
+            app.UseHttpsRedirection();
 
             app.UseRouting();
 

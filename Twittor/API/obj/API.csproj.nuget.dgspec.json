@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\API\\API.csproj": {}
+    "d:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\API\\API.csproj": {}
   },
   "projects": {
-    "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\API\\API.csproj": {
+    "d:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\API\\API.csproj",
+        "projectUniqueName": "d:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\API\\API.csproj",
+        "projectPath": "d:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\API\\API.csproj",
         "packagesPath": "C:\\Users\\Irfhando Mahendra\\.nuget\\packages\\",
-        "outputPath": "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\API\\obj\\",
+        "outputPath": "d:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Irfhando Mahendra\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ZLg+XKF3DsTQtoFohuqz2WCkQ25Z80WufjXYNixh9mwideFJcSfMY9M5s7k+VQYAce0YP/YDOE6eOng1hPvsSg==",
+  "dgSpecHash": "DQOp4UNGA2uYWBRPkeYZnQV47WPjrihAL06T1kGZHYS8z8JF3eLZjOc3Mi+bl85ht0i6YDjVBecfRJhEIxZkxw==",
   "success": true,
-  "projectFilePath": "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\KafkaCreateTopic\\KafkaCreateTopic.csproj",
+  "projectFilePath": "d:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\KafkaCreateTopic\\KafkaCreateTopic.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Irfhando Mahendra\\.nuget\\packages\\confluent.kafka\\1.8.2\\confluent.kafka.1.8.2.nupkg.sha512",
     "C:\\Users\\Irfhando Mahendra\\.nuget\\packages\\librdkafka.redist\\1.8.2\\librdkafka.redist.1.8.2.nupkg.sha512",

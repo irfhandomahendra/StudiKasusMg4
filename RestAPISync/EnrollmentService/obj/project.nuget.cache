@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "lOr0eYyP+/dN//0k6VScc7cJIj737YsqgZbmJwJ96gyNyME5jZRDfT17mH2IY/Pfpq/QY093eRh6qgJiIdRaNA==",
+  "dgSpecHash": "tYOnUDbwYCgePCEPsOAjE6JO3STvHse81OAgXn/OKu2E1E74j+7J/gw6DdWwQ6ZpaBGACq03DcDz4AXdj6XsfA==",
   "success": true,
-  "projectFilePath": "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\RestAPISync\\EnrollmentService\\EnrollmentService.csproj",
+  "projectFilePath": "d:\\AGIT BOOTCAMP\\StudiKasusMg4\\RestAPISync\\EnrollmentService\\EnrollmentService.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Irfhando Mahendra\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\Irfhando Mahendra\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
@@ -43,6 +43,7 @@
     "C:\\Users\\Irfhando Mahendra\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
     "C:\\Users\\Irfhando Mahendra\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\Irfhando Mahendra\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
+    "C:\\Users\\Irfhando Mahendra\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\Irfhando Mahendra\\.nuget\\packages\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
     "C:\\Users\\Irfhando Mahendra\\.nuget\\packages\\swashbuckle.aspnetcore\\5.6.3\\swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
     "C:\\Users\\Irfhando Mahendra\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\5.6.3\\swashbuckle.aspnetcore.swagger.5.6.3.nupkg.sha512",

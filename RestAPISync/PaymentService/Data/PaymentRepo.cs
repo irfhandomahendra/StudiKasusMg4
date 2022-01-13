@@ -30,7 +30,7 @@ namespace PaymentService.Data
             var results = await(from a in _db.Students.Include(e => e.Enrollments)
                                 where a.Fullname.ToLower().Contains(name.ToLower())
                                 orderby a.Id ascending
-                                select a).AsNoTracking().ToListAsync();
+                                select a).ToListAsync();
             return results;
         }
 

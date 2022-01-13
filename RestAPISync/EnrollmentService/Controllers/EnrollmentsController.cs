@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EnrollmentService.Controllers
 {
-    [Authorize(Roles ="student, admin")]
+    //[Authorize(Roles ="student, admin")]
     [ApiController]
     [Route("api/[controller]")]
     public class EnrollmentsController : ControllerBase
@@ -52,25 +52,29 @@ namespace EnrollmentService.Controllers
 
         // POST api/<EnrollmentsController>
         [HttpPost]
-        public async Task<ActionResult<EnrollmentDto>> Post(EnrollmentDto enrollmentCreateDto)
+        public async Task<ActionResult<EnrollmentDto>> Post([FromBody]EnrollmentCreateDto enrollmentCreateDto)
         {
             var enrollment = _mapper.Map<Enrollment>(enrollmentCreateDto);
-            // await _enrollment.Insert(enrollment);
+            //var result = await _enrollment.Insert(enrollment);
             var dtos = _mapper.Map<EnrollmentDto>(enrollment);
 
+            var post = new EnrollmentCreateDto{
+                CourseId = enrollmentCreateDto.CourseId,
+                StudentId = enrollmentCreateDto.StudentId,
+                Invoice = enrollmentCreateDto.Invoice
+            };
             try
             {
-                await _paymentDataClient.SendPostAsync(enrollmentCreateDto);
-                Console.WriteLine("----> Data sent");
+                await _paymentDataClient.SendPostAsync(post);
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"--> Could not send synchronously: {ex.Message}");
             }
 
-            return CreatedAtRoute(nameof(GetEnrollmentById),
-            new {Id=dtos.Id},dtos);
-            // return Ok(dtos);
+            // return CreatedAtRoute(nameof(GetEnrollmentById),
+            // new {Id=dtos.Id},dtos);
+            return Ok(dtos);
         }
 
         // PUT api/<EnrollmentsController>/5

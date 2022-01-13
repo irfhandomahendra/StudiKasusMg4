@@ -65,3 +65,4 @@ D:\AGIT BOOTCAMP\StudiKasusMg4\RestAPISync\EnrollmentService\bin\Debug\net5.0\Mi
 D:\AGIT BOOTCAMP\StudiKasusMg4\RestAPISync\EnrollmentService\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 D:\AGIT BOOTCAMP\StudiKasusMg4\RestAPISync\EnrollmentService\bin\Debug\net5.0\Microsoft.Extensions.Identity.Core.dll
 D:\AGIT BOOTCAMP\StudiKasusMg4\RestAPISync\EnrollmentService\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
+D:\AGIT BOOTCAMP\StudiKasusMg4\RestAPISync\EnrollmentService\bin\Debug\net5.0\Newtonsoft.Json.dll

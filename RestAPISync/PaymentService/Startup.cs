@@ -12,8 +12,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using PaymentService.Controllers;
 using PaymentService.Data;
-using PaymentService.SyncDataServices.Http;
 
 namespace PaymentService
 {
@@ -33,10 +33,12 @@ namespace PaymentService
             options.UseSqlServer(Configuration.GetConnectionString("LocalConnection")));
 
             services.AddScoped<IPaymentRepo,PaymentRepo>();
-            services.AddHttpClient<IPaymentDataClient,HttpPaymentDataClient>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            services.AddHttpClient<EnrollmentsController>();
 
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(options =>
+            options.SerializerSettings.ReferenceLoopHandling =
+            Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "PaymentService", Version = "v1" });
@@ -53,7 +55,7 @@ namespace PaymentService
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "PaymentService v1"));
             }
 
-            //app.UseHttpsRedirection();
+            app.UseHttpsRedirection();
 
             app.UseRouting();
 

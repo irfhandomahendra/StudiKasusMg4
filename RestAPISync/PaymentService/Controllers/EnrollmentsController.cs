@@ -12,7 +12,6 @@ using Newtonsoft.Json;
 using PaymentService.Data;
 using PaymentService.Dtos;
 using PaymentService.Models;
-using PaymentService.SyncDataServices.Http;
 
 namespace PaymentService.Controllers
 {
@@ -22,17 +21,14 @@ namespace PaymentService.Controllers
     {
         private IPaymentRepo _repo;
         private readonly IMapper _mapper;
-        private readonly IPaymentDataClient _paymentDataClient;
         private readonly HttpClient _httpClient;
         private readonly IConfiguration _configuration;
 
         public EnrollmentsController(IPaymentRepo repo,
-        IMapper mapper, IPaymentDataClient paymentDataClient,
-        HttpClient httpClient, IConfiguration configuration)
+        IMapper mapper, HttpClient httpClient, IConfiguration configuration)
         {
             _repo = repo;
             _mapper = mapper;
-            _paymentDataClient = paymentDataClient;
             _httpClient = httpClient;
             _configuration = configuration;
         }
@@ -56,10 +52,17 @@ namespace PaymentService.Controllers
         //     }
         // }
         [HttpPost]
-        public ActionResult TestIndboundConnection(EnrollmentDto enrollmentDto){
-            var result = _paymentDataClient.GetPostsAsync();
-            Console.WriteLine($"--> Hasil deserialize json: {result}");
-            return Ok("Inbound test from platforms controller");
+        public async Task<ActionResult<EnrollmentDto>> Post([FromBody] EnrollmentCreateDto enrollmentCreateDto){
+            try
+            {
+                var enrollment = _mapper.Map<Enrollment>(enrollmentCreateDto);
+                var result = await _repo.Insert(enrollment);
+                return Ok(_mapper.Map<EnrollmentDto>(result));
+            }
+            catch (System.Exception ex)
+            {
+                return BadRequest(ex.Message);                
+            }
         }
 
 
