@@ -1,0 +1,19 @@
+Run on container:
+  1. cd dir API --> docker build -t irfhandomahendra/api .
+  2. docker push irfhandomahendra/api
+  3. kubectl apply -f api-depl.yaml
+  4. cd dir KafkaApp --> docker build -t irfhandomahendra/kafkaapp .
+  5. docker push irfhandomahendra/kafkaapp
+  6. kubectl apply -f kafkaapp-depl.yaml
+  7. cd dir KafkaListeningApp --> docker build -t irfhandomahendra/kafkalisteningapp .
+  8. docker push irfhandomahendra/kafkalisteningapp
+  9. kubectl apply -f kafkalisteningapp-depl.yaml
+  10. kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.0/deploy/static/provider/cloud/deploy.yaml
+  11. kubectl apply -f ingress-srv.yaml
+  12. kubectl local-pvc.yaml
+  13. kubectl create secret generic mssql --from-literal=SA_PASSWORD="Kosongkan@Saja"
+  14. kubectl mssql-depl.yaml
+
+Run on Local:
+  1. Edit Kafkaserver --> localhost:9092
+  2. configure Database to local database
