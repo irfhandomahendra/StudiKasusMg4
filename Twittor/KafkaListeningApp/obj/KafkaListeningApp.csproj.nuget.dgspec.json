@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\KafkaListeningApp\\KafkaListeningApp.csproj": {}
+    "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\KafkaListeningApp\\KafkaListeningApp.csproj": {}
   },
   "projects": {
-    "d:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\KafkaListeningApp\\KafkaListeningApp.csproj": {
+    "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\KafkaListeningApp\\KafkaListeningApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\KafkaListeningApp\\KafkaListeningApp.csproj",
+        "projectUniqueName": "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\KafkaListeningApp\\KafkaListeningApp.csproj",
         "projectName": "KafkaListeningApp",
-        "projectPath": "d:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\KafkaListeningApp\\KafkaListeningApp.csproj",
+        "projectPath": "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\KafkaListeningApp\\KafkaListeningApp.csproj",
         "packagesPath": "C:\\Users\\Irfhando Mahendra\\.nuget\\packages\\",
-        "outputPath": "d:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\KafkaListeningApp\\obj\\",
+        "outputPath": "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\KafkaListeningApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Irfhando Mahendra\\AppData\\Roaming\\NuGet\\NuGet.Config",

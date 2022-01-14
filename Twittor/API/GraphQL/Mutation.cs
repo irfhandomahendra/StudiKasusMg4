@@ -11,6 +11,7 @@ using API.Dtos;
 using API.Kafka;
 using API.Models;
 using HotChocolate;
+using HotChocolate.AspNetCore.Authorization;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
@@ -37,7 +38,7 @@ namespace API.GraphQL
                 Username = input.UserName,
                 Password = BCrypt.Net.BCrypt.HashPassword(input.Password)
             };
-            var key = "User-Add" + DateTime.Now.ToString();
+            var key = "User-Add-" + DateTime.Now.ToString();
             var val = JObject.FromObject(newUser).ToString(Formatting.None);
             var result = await KafkaHelper.SendMessage(kafkaSettings.Value, "User", key, val);
             await KafkaHelper.SendMessage(kafkaSettings.Value, "Logging", key, val);
@@ -148,7 +149,7 @@ namespace API.GraphQL
 
                 var key = "SignIn-" + DateTime.Now.ToString();
                 var val = JObject.FromObject(new { Message = $"{input.Username} has signed in" }).ToString(Formatting.None);
-                await KafkaHelper.SendMessage(kafkaSettings.Value, "logging", key, val);
+                await KafkaHelper.SendMessage(kafkaSettings.Value, "Logging", key, val);
 
                 return await Task.FromResult(
                     new UserToken(new JwtSecurityTokenHandler().WriteToken(jwtToken),
@@ -158,6 +159,7 @@ namespace API.GraphQL
             return await Task.FromResult(new UserToken(null, null, Message: "Username or password was invalid"));
         }
 
+        [Authorize(Roles = new[] { "admin", "member" })]
         public async Task<TransactionStatus> EditProfilAsync(
             ProfileInput input,
             [Service] AppDbContext context,
@@ -187,6 +189,7 @@ namespace API.GraphQL
             }
         }
 
+        [Authorize(Roles = new[] { "admin", "member" })]
         public async Task<TransactionStatus> ChangePasswordAsync(
             ChangePasswordInput input,
             [Service] AppDbContext context,
@@ -212,6 +215,7 @@ namespace API.GraphQL
             }
         }
 
+        [Authorize(Roles = new[] { "admin" })]
         public async Task<TransactionStatus> ChangeUserRoleAsync(
             UserRoleInput input,
             [Service] AppDbContext context,
@@ -234,12 +238,13 @@ namespace API.GraphQL
             return new TransactionStatus(false, "User doesn't exist");
         }
 
+        [Authorize(Roles = new[] { "admin" })]
         public async Task<TransactionStatus> LockUserAsync(
-            UserRoleInput input,
+            int userId,
             [Service] AppDbContext context,
             [Service] IOptions<KafkaSettings> kafkaSettings)
         {
-            var userRoles = context.UserRoles.Where(o => o.UserId == input.UserId).ToList();
+            var userRoles = context.UserRoles.Where(o => o.UserId == userId).ToList();
             bool check = false;
             if (userRoles != null)
             {
@@ -263,6 +268,7 @@ namespace API.GraphQL
             }
         }
 
+        [Authorize(Roles = new[] { "member" })]
         public async Task<TransactionStatus> AddTwittorAsync(
             TwittorInput input,
             [Service] IOptions<KafkaSettings> kafkaSettings)
@@ -284,6 +290,7 @@ namespace API.GraphQL
             return await Task.FromResult(ret);
         }
 
+        [Authorize(Roles = new[] { "member" })]
         public async Task<TransactionStatus> AddCommentAsync(
             CommentInput input,
             [Service] IOptions<KafkaSettings> kafkaSettings)
@@ -304,25 +311,33 @@ namespace API.GraphQL
             return await Task.FromResult(ret);
         }
 
+        [Authorize(Roles = new[] { "member" })]
         public async Task<TransactionStatus> DeleteTwittorAsync(
             int userId,
             [Service] AppDbContext context,
             [Service] IOptions<KafkaSettings> kafkaSettings)
         {
-            var twit = context.Twittors.Where(o => o.UserId == userId).ToList();
-            if (twit != null)
+            var twits = context.Twittors.Where(o => o.UserId == userId).ToList();
+            bool check = false;
+            if (twits != null)
             {
-                var key = "Delete-Twit-" + DateTime.Now.ToString();
-                var val = JObject.FromObject(twit).ToString(Formatting.None);
-                var result = await KafkaHelper.SendMessage(kafkaSettings.Value, "DeleteTwit", key, val);
-                await KafkaHelper.SendMessage(kafkaSettings.Value, "Logging", key, val);
-                var ret = new TransactionStatus(result, "");
-                if (!result)
-                    ret = new TransactionStatus(result, "Failed to submit data");
-                return await Task.FromResult(ret);
+                foreach (var twit in twits)
+                {
+                    var key = "Delete-Twit-" + DateTime.Now.ToString();
+                    var val = JObject.FromObject(twit).ToString(Formatting.None);
+                    var result = await KafkaHelper.SendMessage(kafkaSettings.Value, "DeleteTwit", key, val);
+                    await KafkaHelper.SendMessage(kafkaSettings.Value, "Logging", key, val);
+                    var ret = new TransactionStatus(result, "");
+                    check = true;
+                }
+
+                if (!check)
+                    return new TransactionStatus(false, "Failed to submit data");
+                return await Task.FromResult(new TransactionStatus(true, ""));
             }
-            else{
-                return new TransactionStatus(false,"User has zero twit");
+            else
+            {
+                return new TransactionStatus(false, "User has zero twit");
             }
         }
 

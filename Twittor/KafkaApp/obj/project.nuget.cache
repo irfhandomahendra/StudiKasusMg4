@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "EdxhU4W9t4ReeVYMCjcY6aW7rRYN5rk/NEaumr6xFwdb5N1v38D1oV5OSX7TmRnoc3CNGeDX4z8oiF07XJwSDA==",
+  "dgSpecHash": "CSMwXV9LElyd2Zs6fsuokROwiOSLc/M9tuCoNR9JBwi6pXmE/x4949cxQDSuDTuNIUYOvvofHlixo76gvD5TvA==",
   "success": true,
-  "projectFilePath": "d:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\KafkaApp\\KafkaApp.csproj",
+  "projectFilePath": "D:\\AGIT BOOTCAMP\\StudiKasusMg4\\Twittor\\KafkaApp\\KafkaApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Irfhando Mahendra\\.nuget\\packages\\confluent.kafka\\1.8.2\\confluent.kafka.1.8.2.nupkg.sha512",
     "C:\\Users\\Irfhando Mahendra\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
