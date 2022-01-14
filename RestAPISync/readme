@@ -1,7 +1,7 @@
 Run on container:
   1. cd dir authserver --> docker build -t irfhandomahendra/authserver .
   2. docker push irfhandomahendra/authserver
-  3. kubectl apply -f auth-depl.yaml
+  3. kubectl apply -f authserver-depl.yaml
   4. cd dir enrollmentservice --> docker build -t irfhandomahendra/enrollmentservice .
   5. docker push irfhandomahendra/enrollmentservice
   6. kubectl apply -f enrollment-depl.yaml
@@ -10,9 +10,9 @@ Run on container:
   9. kubectl apply -f payment-depl.yaml
   10. kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.0/deploy/static/provider/cloud/deploy.yaml
   11. kubectl apply -f ingress-srv.yaml
-  12. kubectl local-pvc.yaml
+  12. kubectl apply -f local-pvc.yaml
   13. kubectl create secret generic mssql --from-literal=SA_PASSWORD="Kosongkan@Saja"
-  14. kubectl mssql-depl.yaml
+  14. kubectl apply -f mssql-depl.yaml
 
 Run on local:
   1. replace "LocalConnection" DI on each Startup.cs services with "Database"
